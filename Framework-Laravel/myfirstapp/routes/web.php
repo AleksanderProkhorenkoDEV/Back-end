@@ -2,4 +2,5 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'helloWorld');
+Route::view('/','index')->name('index');
+Route::view('/hello', 'helloWorld')->name('hello');
