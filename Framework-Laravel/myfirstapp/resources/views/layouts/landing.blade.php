@@ -8,6 +8,8 @@
     </title>
 </head>
 <body>
+    @include('layouts.partials.navigation')
+    
     @yield('content')
 </body>
 </html>
