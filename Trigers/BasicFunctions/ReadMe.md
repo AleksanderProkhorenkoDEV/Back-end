@@ -1,0 +1,1 @@
+I don't have the database script with which I did it, but the statement of the exercise is above each function, it is an explanatory way of what I do
