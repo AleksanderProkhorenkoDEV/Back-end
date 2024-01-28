@@ -12,7 +12,7 @@
             <ul class="lista-menu" id="menu-lista">
                 <li class="item-menu"><a href="">Home</a></li>
                 <li class="item-menu"><a href="{{route('register')}}">Register</a></li>
-                <li class="item-menu"><a href="">Login</a></li>
+                <li class="item-menu"><a href="{{route('login')}}">Login</a></li>
             </ul>
         </div>
 

@@ -17,3 +17,7 @@ Route::view('/', 'index')->name('home');
 
 Route::view('/register', 'forms.register')->name('register');
 Route::post('/register/save', [UserController::class, 'save'])->name('register.save');
+
+Route::view('/login', 'forms.login')->name('login');
+Route::post('/login/confirm', [UserController::class, 'login'])->name('login.confirm');
+
