@@ -51,6 +51,17 @@ We create the migrations of the different tables that we are going to use
     ALTER TABLE ALQUILERES ADD CONSTRAINT fk_ALQUILER_USUARIOS FOREIGN KEY (usuario_id) 
     REFERENCES USUARIOS(id_usuario) ON DELETE NO ACTION ON UPDATE CASCADE;
 
+V2
+
+Installation and use of the Laravel and Carbon livewire package.
+
+Performing crud on all boards. To insert data we have used the controllers of each table to be able to use the CustomRequest to validate the input data.
+
+For edit, delete and select, we have used the livewire package to refresh this data.
+
+added to the models the relationships between the tables to be able to extract related fields, for example:
+
+In a rental we relate the table with users and books and extract the necessary data to carry out the relevant operations.
 
 ## 🔗 CONTACT
 
