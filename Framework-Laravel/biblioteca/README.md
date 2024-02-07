@@ -53,7 +53,21 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
+<<<<<<< HEAD
 ## Code of Conduct
+=======
+V2
+
+Installation and use of the Laravel and Carbon livewire package.
+
+Performing crud on all boards. To insert data we have used the controllers of each table to be able to use the CustomRequest to validate the input data.
+
+For edit, delete and select, we have used the livewire package to refresh this data.
+
+added to the models the relationships between the tables to be able to extract related fields, for example:
+
+In a rental we relate the table with users and books and extract the necessary data to carry out the relevant operations.
+>>>>>>> d17254b525d7bf5a1c568f45bed68a133afc4478
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
