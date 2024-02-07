@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Rent;
 
 class User extends Authenticatable
 {
@@ -23,9 +24,9 @@ class User extends Authenticatable
         'phone',
         'deadline',
         'password',
-        
-    ];
 
+    ];
+    protected $primaryKey = 'user_id';
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -45,4 +46,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rents(): HasMany
+    {
+        return $this->hasMany(Rent::class, 'user_id', 'user_id');
+    }
+
+
 }
