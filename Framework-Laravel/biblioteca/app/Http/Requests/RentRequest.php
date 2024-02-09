@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RentRequest extends FormRequest
@@ -26,15 +28,13 @@ class RentRequest extends FormRequest
             'user_id'=>'required',
             'loan_date'=>[
                 'date',
-                'date_formad'=>'Y-m-d',
-                'after_or_equal'=>now()
+                'date_format:Y-m-d',
             ],
-            'deadline'=>[
+            'deadline' => [
                 'required',
                 'date_format:Y-m-d',
                 'date',
-                'after:loan_date',
-            ]
+            ],
         ];
     }
 }

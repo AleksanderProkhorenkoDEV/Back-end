@@ -38,4 +38,4 @@ Route::post('/book/insert', [BookController::class, 'insert'])->name('book.inser
 */
 Route::view('/rents', 'rents')->name('rents');
 Route::get('/rents/create', [RentController::class, 'create'])->name('rent.create');
-Route::post('/rents/insert', [RentController::class], 'insert')->name('rent.insert');
+Route::post('/rents/insert', [RentController::class, 'insert'])->name('rent.insert');

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Book;
 use App\Models\Author;
+use App\Models\Rent;
 
 class BookTable extends Component
 {
@@ -50,7 +51,12 @@ class BookTable extends Component
     }
 
     public function destroy($book_id){
-        Book::findOrFail($book_id)->delete();
+        $book = Book::findOrFail($book_id); //Sacamos el libro para obtener el id del author
+        $author_id = $book->author_id;
+        Rent::where('book_id', $book_id)->delete(); //Borramos el libro del registro de alquileres
+        $book->delete();
+
+
     }
 
     public function resetInputs(){

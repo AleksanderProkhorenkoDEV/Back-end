@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Author;
+use App\Models\Book;
+use App\Models\Rent;
 
 class AuthorsTable extends Component
-{   
+{
     public $author_id,$surnames, $name, $nationality;
 
     //Hook de render de la vista para inicializar las variables de nuestra clase.
@@ -18,7 +20,7 @@ class AuthorsTable extends Component
     }
 
     public function render()
-    {   
+    {
         $authors = Author::all();
         return view('livewire.authors-table', compact('authors'));
     }
@@ -47,6 +49,9 @@ class AuthorsTable extends Component
     }
 
     public function destroy($author_id){
+        $book = Book::findOrFail($author_id);
+        Rent::where('book_id', $book->book_id)->delete();
+        $book->delete();
         Author::findOrFail($author_id)->delete();
     }
 

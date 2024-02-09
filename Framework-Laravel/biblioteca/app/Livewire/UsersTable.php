@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use App\Models\User;
-
+use App\Models\Rent;
 
 class UsersTable extends Component
 {
@@ -17,7 +17,7 @@ class UsersTable extends Component
         $this->email = null;
         $this->phone = null;
     }
-    
+
     //Esta funcion muestra la vista con todos los datos
     public function render(){
         $users = User::all();
@@ -35,7 +35,7 @@ class UsersTable extends Component
 
     //Buscamos de nuevo el usuario y editamos sus propiedades y las guardamos
     public function update(){
-        
+
         $this->validate();
 
         $userUpdate = User::findOrFail($this->input_id);
@@ -48,6 +48,7 @@ class UsersTable extends Component
     }
 
     public function destroy($user_id){
+        Rent::where('user_id', $user_id)->delete();
         User::findOrFail($user_id)->delete();
     }
 
