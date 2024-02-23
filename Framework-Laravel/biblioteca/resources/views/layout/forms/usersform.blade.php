@@ -23,6 +23,7 @@
             <input type="password" name="password">
 
             <input type="submit" value="Add">
+            <a href="{{route('users')}}">Go back</a>
         </form>
     </body>
 

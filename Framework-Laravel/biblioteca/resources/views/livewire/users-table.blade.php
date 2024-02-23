@@ -3,6 +3,9 @@
         <div class="item1">
             <h1>Users Table</h1>
         </div>
+        <div class="item4">
+            <a href="{{ route('user.create') }}">Add User</a>
+        </div>
         <div class="item2">
             <table>
                 @if ($users != null)
@@ -39,27 +42,29 @@
         <div class="item3">
             <form wire:submit.prevent="update">
                 @csrf
-
+                @if($error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endif
                 <input type="hidden" wire:model="input_id">
-
-                <input type="text" wire:model="name">
                 @error('name')
-                    <p>The name formad isn´t valid</p>
+                    <p class="alert alert-danger">The name formad isn´t valid</p>
                 @enderror
-                <input type="text" wire:model="email">
+                <label for="">Name:</label>
+                <input type="text" wire:model="name">
                 @error('email')
-                    <p>The email format isn't valid</p>
+                    <p class="alert alert-danger">The email format isn't valid</p>
                 @enderror
-                <input type="text" wire:model="phone">
+                <label for="">Email:</label>
+                <input type="text" wire:model="email">
                 @error('phone')
-                    <p>The phone format isn't valid</p>
+                    <p class="alert alert-danger">The phone format isn't valid</p>
                 @enderror
-
+                <label for="">Phone:</label>
+                <input type="text" wire:model="phone">
                 <button type="submit" class="button-update">update</button>
             </form>
-        </div>
-        <div class="item4">
-            <a href="{{ route('user.create') }}">Add User</a>
         </div>
     </div>
 </div>

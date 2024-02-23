@@ -195,10 +195,7 @@ td {
         INPUTS FORM TABLE
     -----------------------------------
 */
-p {
-    color: red;
-    margin-top: 5px;
-}
+
 
 select {
     padding: 10px;
@@ -240,4 +237,22 @@ input[type="date"] {
     color: white;
     border: none;
     border-radius: 3px;
+}
+/**
+    -----------------------------------
+        ALERTS -> DANGER
+    -----------------------------------
+*/
+
+
+.alert{
+    padding: 1rem 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    width: 100%;
+}
+.alert-danger{
+    border-left: 2px solid red;
+    background-color: rgba(255,0,0,.2);
 }

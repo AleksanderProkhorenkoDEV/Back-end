@@ -3,6 +3,9 @@
         <div class="item1">
             <h1>Books Table</h1>
         </div>
+        <div class="item4">
+            <a href="{{ route('book.create') }}">Add Book</a>
+        </div>
         <div class="item2">
             <table>
                 @if ($books != null)
@@ -43,22 +46,30 @@
         <div class="item3">
             <form wire:submit.prevent="update">
                 @csrf
-
+                @if ($error != null)
+                    <p class="alert alert-danger">{{ $error}}</p>
+                @endif
                 <input type="hidden" wire:model="book_id">
 
-                <input type="text" wire:model="title" required>
                 @error('title')
                     <p>The title formad isn´t valid</p>
                 @enderror
-                <input type="text" wire:model="category" required>
+                <label for="">Title:</label>
+                <input type="text" wire:model="title" required>
                 @error('category')
                     <p>The category format isn't valid</p>
                 @enderror
-                <input type="textArea" wire:model="description">
+                <label for="">Category:</label>
+                <input type="text" wire:model="category" required>
+
                 @error('description')
                     <p>The description format isn't valid</p>
                 @enderror
+                <label for="">Description:</label>
+                <input type="textArea" wire:model="description">
+
                 @if ($authors != null)
+                <label for="">Authors:</label>
                     <select wire:model="author_id">
                         @foreach ($authors as $author)
                             <option value="{{ $author->author_id }}">{{ $author->name }}</option>
@@ -70,8 +81,6 @@
                 <button type="submit" class="button-update">update</button>
             </form>
         </div>
-        <div class="item4">
-            <a href="{{ route('book.create') }}">Add Book</a>
-        </div>
+
     </div>
 </div>

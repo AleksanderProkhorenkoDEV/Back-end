@@ -3,6 +3,9 @@
         <div class="item1">
             <h1>Author Table</h1>
         </div>
+        <div class="item4">
+            <a href="{{ route('author.create') }}">Add Authors</a>
+        </div>
         <div class="item2">
             <table>
                 @if ($authors !== null)
@@ -27,7 +30,9 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>No author register yet...</tr>
+                        <tr>
+                            <td>No author register yet...</td>
+                        </tr>
                     @endforelse
                 </tbody>
 
@@ -38,25 +43,29 @@
                 @csrf
 
                 <input type="hidden" wire:model="author_id">
-
-                <input type="text" wire:model="surnames">
+                @if ($error != null)
+                    <p class="alert alert-danger">{{ $error }}</p>
+                @endif
                 @error('surnames')
-                    <p>The surnames formad isn´t valid</p>
+                    <p class="alert alert-danger">The surnames formad isn´t valid</p>
                 @enderror
-                <input type="text" wire:model="name">
+                <label for="">Surname</label>
+                <input type="text" wire:model="surnames" required>
                 @error('name')
-                    <p>The name format isn't valid</p>
+                    <p class="alert alert-danger">The name format isn't valid</p>
                 @enderror
-                <input type="text" wire:model="nationality">
+                <label for="">Name</label>
+                <input type="text" wire:model="name" required>
+
                 @error('nationality')
-                    <p>The nationality format isn't valid</p>
+                    <p class="alert alert-danger">The nationality format isn't valid</p>
                 @enderror
+                <label for="">Nationality</label>
+                <input type="text" wire:model="nationality" required>
 
                 <button type="submit" class="button-update">update</button>
             </form>
         </div>
-        <div class="item4">
-            <a href="{{ route('author.create') }}">Add Authors</a>
-        </div>
+
     </div>
 </div>

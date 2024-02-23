@@ -28,6 +28,7 @@
             <input type="date" name="loan_date" value="{{ now()->format('Y-m-d') }}" readonly>
             <input type="date" name="deadline" required>
             <input type="submit" value="Add">
+            <a href="{{route('rents')}}">Go back</a>
         </form>
 
     </body>

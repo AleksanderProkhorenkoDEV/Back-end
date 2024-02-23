@@ -3,6 +3,9 @@
         <div class="item1">
             <h1>Rents table</h1>
         </div>
+        <div class="item4">
+            <a href="{{ route('rent.create') }}">Add Rent</a>
+        </div>
         <div class="item2">
             <table>
                 @if ($rents != null)
@@ -43,7 +46,9 @@
         <div class="item3">
             <form wire:submit.prevent="update">
                 @csrf
-
+                <p>
+                    {!! $errors->first('error') !!}
+                </p>
                 <label for="">DeadLine</label>
                 <input type="date" wire:model="deadline" required/>
                 <p>
@@ -51,9 +56,6 @@
                 </p>
                 <button type="submit" class="button-update">update</button>
             </form>
-        </div>
-        <div class="item4">
-            <a href="{{ route('rent.create') }}">Add Book</a>
         </div>
     </div>
 </div>

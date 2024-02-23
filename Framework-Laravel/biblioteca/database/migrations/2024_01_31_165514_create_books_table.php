@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Schema from the table Books
      */
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id('book_id');
-            $table->string('title', 100);
-            $table->string('category',30);
-            $table->foreignId('author_id')->constrained('authors', 'author_id');
-            $table->string('description',100);
+            $table->id('book_id'); //ID, PRIMARY KEY, AUTO INCREMENTAL
+            $table->string('title', 100); //String, max length 100, not null
+            $table->string('category',30); //String, max length 30, not null
+            $table->foreignId('author_id')->constrained('authors', 'author_id'); //FOREING KEY, Relates the authors table to the author_id field
+            $table->string('description',100); //String, max length 100, not null
             $table->timestamps();
         });
     }
