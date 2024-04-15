@@ -39,4 +39,9 @@ class Note extends Model
         return $query->where('title', 'like', $search);
         
     }
+
+
+    public function scopeSearchByID($query, $id){
+        return $query->where('id', $id);
+    }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class NoteRequest extends FormRequest
+class AuthorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,7 +16,6 @@ class NoteRequest extends FormRequest
         return true;
     }
 
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,19 +24,20 @@ class NoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>'required | string | min:2 | max:255',
-            'description' => 'string | min:4',
-            'author_id' => 'numeric | min:0'
+            'name'=>'required | string | min:2 | max:255',
+            'surnames' => 'string | min:4 | max:255'
         ];
     }
 
-
     public function message() {
         return [
-            'title.required'=>'The title is required',
-            'title.string'=>'The title needs to be string',
-            'title.min'=>'The title length min is 4',
-            'title.max'=>'The title length max is 255'
+            'name.required'=>'The name is required',
+            'name.string'=>'The name needs to be string',
+            'name.min'=>'The name length min is 4',
+            'name.max'=>'The name length max is 255',
+            'surnames.string'=>'The surnames needs to be string',
+            'surnames.min'=>'The surnames length min is 4',
+            'surnames.max'=>'The surnames length max is 255'
         ];
     }
 

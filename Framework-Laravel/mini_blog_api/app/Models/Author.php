@@ -27,6 +27,19 @@ class Author extends Model
         return $this->hasMany(Note::class);
     }
 
+    /**
+     *  --------------------------------------------
+     *       SCOPES
+     *  --------------------------------------------
+     */
 
+    public function scopeSearchByName($query, $title){
+        $param = '%' . $title . '%';
+        return $query->where('name', 'like' , $param);
+    }
+
+    public function scopeSearchById($query, $id){
+        return $query->where('id', $id);
+    }
 
 }

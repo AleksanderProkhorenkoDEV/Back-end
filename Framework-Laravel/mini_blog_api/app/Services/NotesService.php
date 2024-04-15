@@ -21,7 +21,14 @@ class NotesService {
     }
 
     public function create($request){
-        return Note::create($request->all());
+        // dd($request);
+        $note = new Note;
+        $note->title = $request->title;
+        $note->description = $request->description;
+        $note->author_id = $request->author_id;
+        $note->save();
+        // dd($note);
+        return $note;
     }
 
     public function update($note, $request){
