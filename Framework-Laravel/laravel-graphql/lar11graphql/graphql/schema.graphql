@@ -1,17 +1,5 @@
-type Query {
-    
-    user(
-      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
-      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find
+type Query 
+type Mutation
 
-    users(
-      name: String @where(operator: "like")
-    ): [User!]! @paginate(defaultCount: 10)
-}
 
-type User {
-    id: ID!
-    name: String!
-    email: String!
-}
+#import User/User.graphql
