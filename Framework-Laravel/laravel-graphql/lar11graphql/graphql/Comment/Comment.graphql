@@ -1,0 +1,6 @@
+type Comment{
+    id: ID!
+    message: String!
+    post: Post! @belongsTo
+    user: User! @hasManyThrough
+}

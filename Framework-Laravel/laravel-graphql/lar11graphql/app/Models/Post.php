@@ -13,14 +13,14 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'description'
+        'description',
     ];
 
 
     /** ----------- RELATIONSHIP ----------- */
 
     public function user () {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function comment () {

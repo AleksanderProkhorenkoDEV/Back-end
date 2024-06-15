@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
+use App\Models\User;
 
 class Comment extends Model
 {
@@ -17,6 +18,11 @@ class Comment extends Model
     /** ----------- RELATIONSHIP ----------- */
 
     public function post () {
-        return $this->hasOne(Post::class);
+        return $this->belongsTo(Post::class);
     }
+
+    public function user(){
+        return $this->belongsToThrough(User::class, Post::class);
+    }
+
 }

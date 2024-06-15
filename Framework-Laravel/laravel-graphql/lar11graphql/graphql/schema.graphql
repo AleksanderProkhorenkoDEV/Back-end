@@ -3,3 +3,5 @@ type Mutation
 
 
 #import User/User.graphql
+#import Post/Post.graphql
+#import Comment/Comment.graphql
