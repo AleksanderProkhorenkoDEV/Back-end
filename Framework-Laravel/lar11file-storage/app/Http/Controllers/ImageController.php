@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ImageController extends Controller
 {
@@ -13,7 +14,7 @@ class ImageController extends Controller
      */
     public function index(Request $request)
     {
-        return Storage::files($request->carpeta);
+        return Storage::files('subjects');
     }
 
     /**
@@ -34,12 +35,25 @@ class ImageController extends Controller
         return response()->json(['message' => 'Finish upload', 'status' => 200], 200);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Request $request)
     {
+        $fileName = $request->image;
+        $filePath = 'subjects/' . $fileName; // Ruta en el disco local
 
+        if (Storage::disk('local')->exists($filePath)) {
+            // Crear una respuesta de flujo para devolver el archivo
+            $response = new StreamedResponse(function () use ($filePath) {
+                $stream = Storage::disk('local')->readStream($filePath);
+                fpassthru($stream);
+            });
+
+            // Establecer los encabezados apropiados
+            $response->headers->set('Content-Type', Storage::disk('local')->mimeType($filePath));
+            $response->headers->set('Content-Disposition', 'inline; filename="' . $fileName . '"');
+            $response->headers->set('Content-Length', Storage::disk('local')->size($filePath));
+
+            return $response;
+        }
     }
     /**
      * Show the form for editing the specified resource.
