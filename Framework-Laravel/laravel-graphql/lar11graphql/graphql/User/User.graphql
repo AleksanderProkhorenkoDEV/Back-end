@@ -16,5 +16,5 @@ extend type Query{
 extend type Mutation{
     create(name: String!, email: String!, password: String!): User! @create
     update(id: ID! @eq, name: String!, email: String!, password: String!): User! @update
-    delete(id: ID! @eq): User! @delete
+    delete(id: ID! @eq): User! @field(resolver: "App\\GraphQL\\Mutations\\DeleteUser")
 }
