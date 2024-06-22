@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 final readonly class DeleteUser
 {
@@ -11,8 +12,15 @@ final readonly class DeleteUser
     {
         $user = User::findOrFail($args["id"]);
 
+        foreach($user->comments as $comment){
+            Log::info($comment);
+            $comment->delete();
+        }
+
         foreach ($user->posts as $post) {
-            $post->comments()->delete();
+            foreach ($post->comments as $comment ) {
+                $comment->delete();
+            }
             $post->delete();
         }
 
