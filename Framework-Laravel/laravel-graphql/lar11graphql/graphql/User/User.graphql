@@ -8,9 +8,8 @@ type User{
 
 extend type Query{
     users: [User!]! @paginate(defaultCount:20) @orderBy(column:name, direction:DESC)
-    show(id: ID! @whereKey): User @find
+    showUser(id: ID! @whereKey): User @find
     searchByName(name: String!): User  @paginate(defaultCount:20,scopes: ["searchByName"])
-    
 }
 
 extend type Mutation{

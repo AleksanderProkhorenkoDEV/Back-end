@@ -26,4 +26,10 @@ class Post extends Model
     public function comments () {
         return $this->hasMany(Comment::class);
     }
+
+    /** ----------- SCOPES ----------- */
+
+    public function scopesearchByTitle($query, $type){
+        return $type != null ? $query->where('title', 'LIKE', $type['title'] . '%') : $query;
+    }
 }
