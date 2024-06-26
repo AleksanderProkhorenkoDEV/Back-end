@@ -4,3 +4,9 @@ type Comment{
     post: Post! @belongsTo
     user: User! @hasManyThrough
 }
+
+extend type Query{
+    comments: [Comment!]! @paginate(defaultCount:20)
+    showComment(id: ID! @eq): Comment @find
+    showCommentsByUser(email: String! ): [Comment]! @field(resolver: "App\\GraphQL\\Queries\\SearchByEmailResolver")
+}

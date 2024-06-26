@@ -49,7 +49,8 @@ class User extends Authenticatable
     }
     /** ----------- RELATIONSHIP ----------- */
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class, 'user_id');
     }
 
@@ -60,7 +61,13 @@ class User extends Authenticatable
 
     /** ----------- SCOPES ----------- */
 
-    public function scopesearchByName($query, $type){
+    public function scopesearchByName($query, $type)
+    {
         return $type != null ? $query->where('name', 'LIKE', $type['name'] . '%') : $query;
+    }
+
+    public function scopesearchByEmail($query, $type)
+    {
+        return $type != null ? $query->where('email', $type) : $query;
     }
 }

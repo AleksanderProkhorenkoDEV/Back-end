@@ -17,12 +17,13 @@ class Comment extends Model
 
     /** ----------- RELATIONSHIP ----------- */
 
-    public function post () {
+    public function post()
+    {
         return $this->belongsTo(Post::class);
     }
 
-    public function user(){
-        return $this->belongsToThrough(User::class, Post::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-
 }
