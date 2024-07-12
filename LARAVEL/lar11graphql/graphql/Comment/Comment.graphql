@@ -10,3 +10,9 @@ extend type Query{
     showComment(id: ID! @eq): Comment @find
     showCommentsByUser(email: String! ): [Comment]! @field(resolver: "App\\GraphQL\\Queries\\SearchByEmailResolver")
 }
+
+extend type Mutation{
+    createComment(message: String!, user_id: ID!, post_id: ID!): Comment! @create
+    editComment(id: ID!, message: String!, user_id: ID!, post_id: ID!): Comment! @update
+    deleteComment(id: ID! @eq): Comment! @delete
+}

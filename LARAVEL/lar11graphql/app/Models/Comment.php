@@ -12,7 +12,9 @@ class Comment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'message'
+        'message',
+        'user_id',
+        'post_id'
     ];
 
     /** ----------- RELATIONSHIP ----------- */
