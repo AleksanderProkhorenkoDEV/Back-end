@@ -1,0 +1,11 @@
+name: nginx
+services:
+  nginx:
+    image: nginx:latest  # Imagen correcta
+    container_name: nginx_server  # Nombre sin espacios
+    ports:
+      - "80:80"
+    volumes:
+      - ./App:/usr/share/nginx/html  # Carpeta para archivos web
+      - ./Nginx/nginx.conf:/etc/nginx/nginx.conf  # Configuración de Nginx
+    restart: unless-stopped
